@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "spfxlearnwp-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/spfxlearnwp/SpfxlearnwpWebPart.js",
+          "manifest": "./src/webparts/spfxlearnwp/SpfxlearnwpWebPart.manifest.json"
+        }
+      ]
+    },
+    "crud-opswp-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/crudOpswp/CrudOpswpWebPart.js",
+          "manifest": "./src/webparts/crudOpswp/CrudOpswpWebPart.manifest.json"
+        }
+      ]
+    },
+    "pnpwp-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pnpwp/PnpwpWebPart.js",
+          "manifest": "./src/webparts/pnpwp/PnpwpWebPart.manifest.json"
+        }
+      ]
+    },
+    "elevatepermission-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/elevatepermission/ElevatepermissionWebPart.js",
+          "manifest": "./src/webparts/elevatepermission/ElevatepermissionWebPart.manifest.json"
+        }
+      ]
+    },
+    "responsivegrid-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/responsivegrid/ResponsivegridWebPart.js",
+          "manifest": "./src/webparts/responsivegrid/ResponsivegridWebPart.manifest.json"
+        }
+      ]
+    },
+    "pnpcontrols-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pnpcontrols/PnpcontrolsWebPart.js",
+          "manifest": "./src/webparts/pnpcontrols/PnpcontrolsWebPart.manifest.json"
+        }
+      ]
+    },
+    "handlelargelist-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/handlelargelist/HandlelargelistWebPart.js",
+          "manifest": "./src/webparts/handlelargelist/HandlelargelistWebPart.manifest.json"
+        }
+      ]
+    },
+    "customformwebpart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/customformwebpart/CustomformwebpartWebPart.js",
+          "manifest": "./src/webparts/customformwebpart/CustomformwebpartWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "jquery": "node_modules/jquery/dist/jquery.min.js",
+    "jqueryui": "node_modules/jqueryui/jquery-ui.min.js"
+  },
+  "localizedResources": {
+    "SpfxlearnwpWebPartStrings": "lib/webparts/spfxlearnwp/loc/{locale}.js",
+    "CrudOpswpWebPartStrings": "lib/webparts/crudOpswp/loc/{locale}.js",
+    "PnpwpWebPartStrings": "lib/webparts/pnpwp/loc/{locale}.js",
+    "ElevatepermissionWebPartStrings": "lib/webparts/elevatepermission/loc/{locale}.js",
+    "ResponsivegridWebPartStrings": "lib/webparts/responsivegrid/loc/{locale}.js",
+    "PnpcontrolsWebPartStrings": "lib/webparts/pnpcontrols/loc/{locale}.js",
+    "HandlelargelistWebPartStrings": "lib/webparts/handlelargelist/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "CustomformwebpartWebPartStrings": "lib/webparts/customformwebpart/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,116 @@
+@import '~@fluentui/react/dist/sass/Fabric.scss';
+.customformwebpart {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+
+  .grid{
+    @include ms-Grid;
+  }
+
+  .gridRow{
+    @include ms-Grid-row;
+    padding-bottom: 8px;
+  }
+
+  .smallCol{
+    @include ms-Grid-col;
+    @include ms-lg2;
+    @include ms-md4;
+    @include ms-sm6;
+    color: white !important;
+  }
+
+  .largeCol{
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-md8;
+    @include ms-sm6;
+  }
+
+  :global{
+    #people{
+    background-color:white !important;
+    }
+    .ms-BasePicker-text{
+      color: black !important;
+    }
+  }
+
+  .button{
+    margin-left: 20px;
+    margin-top: 30px;
+    border-radius: 30px;
+  }
+
+  .container{
+    max-width: 700px;
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 25px 50px 0 rgba(0,0,0,0.1)
+  }
+
+  .row{
+    @include ms-Grid-row;
+    @include ms-fontColor-white;
+    background-color: lightgrey;
+    padding: 20px;
+  }
+
+  .column{
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+
+  .validation-mandatory{
+    color: red !important;
+  }
+
+  .form-validation{
+    display: none !important;
+    margin: 5px !important;
+    color: red !important;
+  }
+
+  .title{
+    @include ms-font-xl;
+    color: rgb(50, 49, 48);
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .subTitle{
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}

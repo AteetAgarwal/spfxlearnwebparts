@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "nodeVersion": "16.18.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.1",
+    "libraryName": "spfxlearn",
+    "libraryId": "5a5b4271-c29a-4a6f-b129-5a1ef1facccb",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "spfxlearn",
+    "solutionShortDescription": "spfxlearn description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "extension",
+    "extensionType": "ApplicationCustomizer"
+  }
+}

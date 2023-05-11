@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "c251e51b-e5ab-4bde-b6bb-d2b0ad2ef545",
+  "alias": "ElevatepermissionWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+    "group": { "default": "Advanced" },
+    "title": { "default": "elevatepermission" },
+    "description": { "default": "elevatepermission description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "elevatepermission",
+      "flowUrl":"https://prod-23.centralindia.logic.azure.com:443/workflows/602b86e8c5174e88beac41b7d50e665a/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Z32n_FeYxYDGw9nAZ_oZdMs-txTm3e99yeFI2YLHYFI",
+      "listTitle":"CustomList"
+    }
+  }]
+}
