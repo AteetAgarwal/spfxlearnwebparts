@@ -65,6 +65,22 @@
           "manifest": "./src/webparts/customformwebpart/CustomformwebpartWebPart.manifest.json"
         }
       ]
+    },
+    "sourceconnectecwebpart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/sourceconnectecwebpart/SourceconnectecwebpartWebPart.js",
+          "manifest": "./src/webparts/sourceconnectecwebpart/SourceconnectecwebpartWebPart.manifest.json"
+        }
+      ]
+    },
+    "consumerconnectedwebpart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/consumerconnectedwebpart/ConsumerconnectedwebpartWebPart.js",
+          "manifest": "./src/webparts/consumerconnectedwebpart/ConsumerconnectedwebpartWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {
@@ -80,6 +96,8 @@
     "PnpcontrolsWebPartStrings": "lib/webparts/pnpcontrols/loc/{locale}.js",
     "HandlelargelistWebPartStrings": "lib/webparts/handlelargelist/loc/{locale}.js",
     "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
-    "CustomformwebpartWebPartStrings": "lib/webparts/customformwebpart/loc/{locale}.js"
+    "CustomformwebpartWebPartStrings": "lib/webparts/customformwebpart/loc/{locale}.js",
+    "SourceconnectecwebpartWebPartStrings": "lib/webparts/sourceconnectecwebpart/loc/{locale}.js",
+    "ConsumerconnectedwebpartWebPartStrings": "lib/webparts/consumerconnectedwebpart/loc/{locale}.js"
   }
 }

@@ -16,7 +16,6 @@
     "solutionShortDescription": "spfxlearn description",
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
-    "componentType": "extension",
-    "extensionType": "ApplicationCustomizer"
+    "componentType": "webpart"
   }
 }
