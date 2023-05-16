@@ -81,6 +81,14 @@
           "manifest": "./src/webparts/consumerconnectedwebpart/ConsumerconnectedwebpartWebPart.manifest.json"
         }
       ]
+    },
+    "singlepageapplication-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/singlepageapplication/SinglepageapplicationWebPart.js",
+          "manifest": "./src/webparts/singlepageapplication/SinglepageapplicationWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {
@@ -98,6 +106,7 @@
     "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
     "CustomformwebpartWebPartStrings": "lib/webparts/customformwebpart/loc/{locale}.js",
     "SourceconnectecwebpartWebPartStrings": "lib/webparts/sourceconnectecwebpart/loc/{locale}.js",
-    "ConsumerconnectedwebpartWebPartStrings": "lib/webparts/consumerconnectedwebpart/loc/{locale}.js"
+    "ConsumerconnectedwebpartWebPartStrings": "lib/webparts/consumerconnectedwebpart/loc/{locale}.js",
+    "SinglepageapplicationWebPartStrings": "lib/webparts/singlepageapplication/loc/{locale}.js"
   }
 }

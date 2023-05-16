@@ -13,7 +13,10 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.109.2",
+    "@microsoft/decorators": "1.17.1",
+    "@microsoft/sp-application-base": "1.17.1",
     "@microsoft/sp-core-library": "1.17.1",
+    "@microsoft/sp-dialog": "1.17.1",
     "@microsoft/sp-lodash-subset": "1.17.1",
     "@microsoft/sp-office-ui-fabric-core": "1.17.1",
     "@microsoft/sp-property-pane": "1.17.1",
@@ -28,10 +31,8 @@
     "office-ui-fabric-react": "^7.199.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "tslib": "2.3.1",
-    "@microsoft/decorators": "1.17.1",
-    "@microsoft/sp-dialog": "1.17.1",
-    "@microsoft/sp-application-base": "1.17.1"
+    "react-router-dom": "^6.11.1",
+    "tslib": "2.3.1"
   },
   "devDependencies": {
     "@microsoft/eslint-config-spfx": "1.17.1",
@@ -44,6 +45,7 @@
     "@types/jqueryui": "^1.12.16",
     "@types/react": "17.0.45",
     "@types/react-dom": "17.0.17",
+    "@types/react-router-dom": "^5.3.3",
     "@types/webpack-env": "~1.15.2",
     "ajv": "^6.12.5",
     "eslint": "8.7.0",
