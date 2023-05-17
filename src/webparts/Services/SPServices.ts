@@ -1,5 +1,5 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import{SPHttpClient, SPHttpClientResponse,ISPHttpClientOptions, HttpClient, HttpClientResponse, IHttpClientOptions} from '@microsoft/sp-http'
+import{SPHttpClient, MSGraphClientV3, SPHttpClientResponse,ISPHttpClientOptions, HttpClient, HttpClientResponse, IHttpClientOptions} from '@microsoft/sp-http'
 import{IDropdownOption} from 'office-ui-fabric-react'
 import {SPFI, spfi, SPFx as spSPFX} from '@pnp/sp'
 import '@pnp/sp/webs';
@@ -9,9 +9,8 @@ import '@pnp/sp/items/get-all';
 import '@pnp/sp/fields';
 import { IListItem } from "../handlelargelist/components/IListItem";
 import { stringIsNullOrEmpty } from "@pnp/common";
+import {IList, IUser} from '../msgraphapisphttp/components/Msgraphapisphttp';
 import { ICustomformwebpartState } from "../customformwebpart/components/ICustomformwebpartState";
-//import { IHandlelargelistState } from "../handlelargelist/components/IHandlelargelistState";
-//import { IHandlelargelistProps } from "../handlelargelist/components/IHandlelargelistProps";
 
 export class SPOperations{
     private spContext:SPFI;
@@ -474,5 +473,127 @@ export class SPOperations{
             })
         });
     }
+    //#endregion
+
+    //#region "MSGraphClient using SPHttp"
+    public getUsers(context:WebPartContext):Promise<IUser[]>{
+        let users:IUser[]=[];
+        return new Promise<IUser[]>((resolve,reject)=>{
+            context.msGraphClientFactory.getClient("3").then((msGraphClient: MSGraphClientV3) => {
+                msGraphClient.api("users").version("v1.0").select("displayName,mail").get((err, res) => {
+                    if (err) {
+                        console.log("Error occured " + err);
+                    }
+                    else {
+                        res.value.map((result: any) => {
+                        users.push({ displayName: result.displayName, mail: result.mail });
+                        });
+                    }
+                    resolve(users);
+                });
+            });
+        });
+     }
+
+     /*public async getAllItemsFromList(context:WebPartContext, listName:string):Promise<IList[]>{
+        let listItems:IList[]=[];
+        return new Promise<IList[]>(async (resolve,reject)=>{
+            context.msGraphClientFactory.getClient("3").then((msGraphClient: MSGraphClientV3) => {
+                msGraphClient
+                .api("sites/ngsp.sharepoint.com,f8f8ceda-ee50-46f0-a164-10369d2ade07,2a312457-41c7-4dca-b577-ab776822e8ad/lists/fd119412-b2f4-433d-bb38-f2ff682ec23e/items")
+                .expand("fields($select=Title,field_2)")
+                .version("v1.0").get(async (err, res) => {
+                    if (err) {
+                        console.log("Error occured " + err);
+                    }
+                    else {
+                        res.value.map((result: any) => {
+                            listItems.push({ title: result.fields.Title, mail: result.fields.field_2 });
+                        });
+                    }
+                    if(res["@odata.nextLink"] !=null || res["@odata.nextLink"] !=undefined){
+                        let recursiveCall=(res:any)=>{
+                            let nextLink = new URL(res["@odata.nextLink"]);
+                            let skipToken = nextLink.searchParams.get("$skipToken");
+                            if(skipToken == null){
+                                skipToken = nextLink.searchParams.get("$skiptoken");
+                            }
+                            return new Promise<IList[]>(async (resolve)=>{
+                                context.msGraphClientFactory.getClient("3").then((msGraphClient: MSGraphClientV3) => {
+                                    msGraphClient
+                                    .api("sites/ngsp.sharepoint.com,f8f8ceda-ee50-46f0-a164-10369d2ade07,2a312457-41c7-4dca-b577-ab776822e8ad/lists/fd119412-b2f4-433d-bb38-f2ff682ec23e/items")
+                                    .expand("fields($select=Title,field_2)")
+                                    .version("v1.0").skipToken(skipToken).get(async (err, res) => {
+                                        if (err) {
+                                            console.log("Error occured " + err);
+                                        }
+                                        else {
+                                            res.value.map((result: any) => {
+                                                listItems.push({ title: result.fields.Title, mail: result.fields.field_2 });
+                                            });
+                                        }
+                                        if(res["@odata.nextLink"] !=null || res["@odata.nextLink"] !=undefined){
+                                            resolve(listItems);
+                                            await recursiveCall(res);
+                                        }
+                                        else{
+                                            //resolve(listItems);
+                                            return;
+                                        }
+                                    });
+                                })
+                            })
+                        };
+                        await recursiveCall(res);
+                    }
+                    else{
+                        resolve(listItems);
+                    }
+                    resolve(listItems);
+                });
+            });
+        });
+     }*/
+
+     public async getAllItemsFromList(context:WebPartContext, listName:string):Promise<IList[]>{
+        let listItems:IList[]=[];
+        let recursiveCall=(nextlink?:string)=>{
+            let skipToken:string=null;
+            if(nextlink !==null && nextlink !==undefined && nextlink !==""){
+                let nextLink = new URL(nextlink);
+                skipToken = nextLink.searchParams.get("$skipToken");
+                if(skipToken == null){
+                    skipToken = nextLink.searchParams.get("$skiptoken");
+                }
+            }
+            return new Promise<IList[]>(async (resolve)=>{
+                context.msGraphClientFactory.getClient("3").then((msGraphClient: MSGraphClientV3) => {
+                    msGraphClient
+                    .api("sites/ngsp.sharepoint.com,f8f8ceda-ee50-46f0-a164-10369d2ade07,2a312457-41c7-4dca-b577-ab776822e8ad/lists/fd119412-b2f4-433d-bb38-f2ff682ec23e/items")
+                    .expand("fields($select=Title,field_2)")
+                    .version("v1.0").skipToken(skipToken).get(async (err, res) => {
+                        if (err) {
+                            console.log("Error occured " + err);
+                        }
+                        else {
+                            res.value.map((result: any) => {
+                                listItems.push({ title: result.fields.Title, mail: result.fields.field_2 });
+                            });
+                        }
+                        if(res["@odata.nextLink"] !==null &&  res["@odata.nextLink"] !==undefined){
+                            resolve(await recursiveCall(res["@odata.nextLink"]));
+                        }
+                        else{
+                            resolve(listItems);
+                        }
+                    });
+                })
+            })
+        };
+        return new Promise<IList[]>(async (resolve)=>{
+            await recursiveCall();
+            resolve(listItems);
+        });
+     }
     //#endregion
 }

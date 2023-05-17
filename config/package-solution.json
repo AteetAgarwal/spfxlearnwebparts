@@ -14,6 +14,8 @@
       "termsOfUseUrl": "",
       "mpnId": "Undefined-1.17.1"
     },
+    "webApiPermissionRequests": [{"resource": "Microsoft Graph", "scope": "User.ReadBasic.All"},
+      {"resource": "Microsoft Graph", "scope": "sites.Read.all"}],
     "metadata": {
       "shortDescription": {
         "default": "spfxlearn description"

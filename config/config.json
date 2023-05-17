@@ -89,6 +89,14 @@
           "manifest": "./src/webparts/singlepageapplication/SinglepageapplicationWebPart.manifest.json"
         }
       ]
+    },
+    "msgraphapisphttp-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/msgraphapisphttp/MsgraphapisphttpWebPart.js",
+          "manifest": "./src/webparts/msgraphapisphttp/MsgraphapisphttpWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {
@@ -107,6 +115,7 @@
     "CustomformwebpartWebPartStrings": "lib/webparts/customformwebpart/loc/{locale}.js",
     "SourceconnectecwebpartWebPartStrings": "lib/webparts/sourceconnectecwebpart/loc/{locale}.js",
     "ConsumerconnectedwebpartWebPartStrings": "lib/webparts/consumerconnectedwebpart/loc/{locale}.js",
-    "SinglepageapplicationWebPartStrings": "lib/webparts/singlepageapplication/loc/{locale}.js"
+    "SinglepageapplicationWebPartStrings": "lib/webparts/singlepageapplication/loc/{locale}.js",
+    "MsgraphapisphttpWebPartStrings": "lib/webparts/msgraphapisphttp/loc/{locale}.js"
   }
 }
