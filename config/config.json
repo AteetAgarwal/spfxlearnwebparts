@@ -97,6 +97,14 @@
           "manifest": "./src/webparts/msgraphapisphttp/MsgraphapisphttpWebPart.manifest.json"
         }
       ]
+    },
+    "msgraphapipnpwp-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/msgraphapipnpwp/MsgraphapipnpwpWebPart.js",
+          "manifest": "./src/webparts/msgraphapipnpwp/MsgraphapipnpwpWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {
@@ -116,6 +124,7 @@
     "SourceconnectecwebpartWebPartStrings": "lib/webparts/sourceconnectecwebpart/loc/{locale}.js",
     "ConsumerconnectedwebpartWebPartStrings": "lib/webparts/consumerconnectedwebpart/loc/{locale}.js",
     "SinglepageapplicationWebPartStrings": "lib/webparts/singlepageapplication/loc/{locale}.js",
-    "MsgraphapisphttpWebPartStrings": "lib/webparts/msgraphapisphttp/loc/{locale}.js"
+    "MsgraphapisphttpWebPartStrings": "lib/webparts/msgraphapisphttp/loc/{locale}.js",
+    "MsgraphapipnpwpWebPartStrings": "lib/webparts/msgraphapipnpwp/loc/{locale}.js"
   }
 }

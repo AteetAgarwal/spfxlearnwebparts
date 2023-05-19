@@ -14,8 +14,24 @@
       "termsOfUseUrl": "",
       "mpnId": "Undefined-1.17.1"
     },
-    "webApiPermissionRequests": [{"resource": "Microsoft Graph", "scope": "User.ReadBasic.All"},
-      {"resource": "Microsoft Graph", "scope": "sites.Read.all"}],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadBasic.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "sites.Read.all"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Calendars.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Calendars.ReadWrite"
+      }
+    ],
     "metadata": {
       "shortDescription": {
         "default": "spfxlearn description"

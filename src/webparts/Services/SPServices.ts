@@ -11,6 +11,7 @@ import { IListItem } from "../handlelargelist/components/IListItem";
 import { stringIsNullOrEmpty } from "@pnp/common";
 import {IList, IUser} from '../msgraphapisphttp/components/Msgraphapisphttp';
 import { ICustomformwebpartState } from "../customformwebpart/components/ICustomformwebpartState";
+import {graphfi, SPFx as graphSPFx} from '@pnp/graph/presets/all';
 
 export class SPOperations{
     private spContext:SPFI;
@@ -493,67 +494,7 @@ export class SPOperations{
                 });
             });
         });
-     }
-
-     /*public async getAllItemsFromList(context:WebPartContext, listName:string):Promise<IList[]>{
-        let listItems:IList[]=[];
-        return new Promise<IList[]>(async (resolve,reject)=>{
-            context.msGraphClientFactory.getClient("3").then((msGraphClient: MSGraphClientV3) => {
-                msGraphClient
-                .api("sites/ngsp.sharepoint.com,f8f8ceda-ee50-46f0-a164-10369d2ade07,2a312457-41c7-4dca-b577-ab776822e8ad/lists/fd119412-b2f4-433d-bb38-f2ff682ec23e/items")
-                .expand("fields($select=Title,field_2)")
-                .version("v1.0").get(async (err, res) => {
-                    if (err) {
-                        console.log("Error occured " + err);
-                    }
-                    else {
-                        res.value.map((result: any) => {
-                            listItems.push({ title: result.fields.Title, mail: result.fields.field_2 });
-                        });
-                    }
-                    if(res["@odata.nextLink"] !=null || res["@odata.nextLink"] !=undefined){
-                        let recursiveCall=(res:any)=>{
-                            let nextLink = new URL(res["@odata.nextLink"]);
-                            let skipToken = nextLink.searchParams.get("$skipToken");
-                            if(skipToken == null){
-                                skipToken = nextLink.searchParams.get("$skiptoken");
-                            }
-                            return new Promise<IList[]>(async (resolve)=>{
-                                context.msGraphClientFactory.getClient("3").then((msGraphClient: MSGraphClientV3) => {
-                                    msGraphClient
-                                    .api("sites/ngsp.sharepoint.com,f8f8ceda-ee50-46f0-a164-10369d2ade07,2a312457-41c7-4dca-b577-ab776822e8ad/lists/fd119412-b2f4-433d-bb38-f2ff682ec23e/items")
-                                    .expand("fields($select=Title,field_2)")
-                                    .version("v1.0").skipToken(skipToken).get(async (err, res) => {
-                                        if (err) {
-                                            console.log("Error occured " + err);
-                                        }
-                                        else {
-                                            res.value.map((result: any) => {
-                                                listItems.push({ title: result.fields.Title, mail: result.fields.field_2 });
-                                            });
-                                        }
-                                        if(res["@odata.nextLink"] !=null || res["@odata.nextLink"] !=undefined){
-                                            resolve(listItems);
-                                            await recursiveCall(res);
-                                        }
-                                        else{
-                                            //resolve(listItems);
-                                            return;
-                                        }
-                                    });
-                                })
-                            })
-                        };
-                        await recursiveCall(res);
-                    }
-                    else{
-                        resolve(listItems);
-                    }
-                    resolve(listItems);
-                });
-            });
-        });
-     }*/
+    }
 
      public async getAllItemsFromList(context:WebPartContext, listName:string):Promise<IList[]>{
         let listItems:IList[]=[];
@@ -593,6 +534,18 @@ export class SPOperations{
         return new Promise<IList[]>(async (resolve)=>{
             await recursiveCall();
             resolve(listItems);
+        });
+     }
+    //#endregion
+
+    //#region "MSGraph using PnP"
+     public getCalendarEvents(context:WebPartContext):Promise<any>{
+        const graph=graphfi().using(graphSPFx(context));
+        return new Promise<any>((resolve,reject)=>{
+            graph.me.events().then((response)=>{
+                console.log(response);
+                resolve(response);
+            })
         });
      }
     //#endregion
